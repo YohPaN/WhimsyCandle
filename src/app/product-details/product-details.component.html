@@ -1,0 +1,15 @@
+<h2>Détails bougie</h2>
+
+<div *ngIf="product">
+    <h3> {{product.name}}</h3>
+    <img src={{product.picture}}>
+    <p>
+        {{product.price | currency}}
+        {{product.taille}}
+        {{product.senteur}}
+        {{product.color}}
+        {{product.topping}}
+        {{product.temps}}
+    </p>
+    <button (click)="addToCart(product)">Ajouter au panier</button>
+</div>
