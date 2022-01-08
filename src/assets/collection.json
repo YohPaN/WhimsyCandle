@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Sorcière",
+    "items": [
+      {
+        "itemName": "Chaudron",
+        "price": 15
+      }]
+    
+  },
+  {
+    "name": "Autre",
+    "items": 
+      [
+        {
+          "itemName": "Sphére",
+          "price": 8
+        },
+        {
+          "itemName": "Pellote",
+          "price": 6
+        }
+      ]
+    }
+]

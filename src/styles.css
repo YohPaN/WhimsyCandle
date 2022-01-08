@@ -1,1 +1,194 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+
+* {
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #616161;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    background-image: url('/assets/Image/background.jpg');
+    margin: 0;
+    background-size: 100%;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  router-outlet + *  {
+    padding: 0 16px;
+  }
+  
+  /* Text */
+  
+  @font-face{
+    font-family: Waterfall;
+    src: url("/assets/Font-style/Waterfall-Regular.ttf");
+  }
+  
+  h1 {
+    font-family: 'Waterfall';
+    font-size: 60px;
+    font-weight: bold;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  h3{
+    font-size: 30px;
+    margin: 3px;
+  }
+  
+  h1, h2 {
+    font-weight: lighter;
+  }
+  
+  p {
+    font-size: 14px;
+    margin: 3px;
+  }
+  
+  /* Hyperlink */
+  
+  a {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    margin: 3px;
+  }
+  
+  a:hover {
+    opacity: 0.8;
+  }
+  
+  /* Input */
+  
+  input {
+    font-size: 14px;
+    border-radius: 2px;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #BDBDBD;
+  }
+  
+  label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+    text-transform: uppercase;
+  }
+  
+  /* Button */
+  .button, button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+  }
+  
+  .button:hover, button:hover {
+    opacity: 0.8;
+    font-weight: normal;
+  }
+  
+  .button:disabled, button:disabled {
+    opacity: 0.5;
+    cursor: auto;
+  }
+  
+  /* Fancy Button */
+  
+  .fancy-button {
+    background-color: white;
+    color: #1976d2;
+  }
+  
+  .fancy-button i.material-icons {
+    color: #1976d2;
+    padding-right: 4px;
+  }
+  
+  /* Top Bar */
+  
+  app-top-bar {
+    background-color: black;
+    width: 100%;
+    height: 80px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+  }
+  
+  app-top-bar h1 {
+    color: white;
+    margin: 0;
+    border:  1px solid black;
+  }
+  
+  /*product list*/
+  
+  app-product-list{
+    width: 100%;
+    border: 3px solid white;
+  }
+  
+  .product{
+    width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 3px solid red;
+  }
+  
+  app-product-list h2{
+    border: 1px solid black;
+  }
+  
+  app-product-list .test{
+    height: auto;
+    border: 3px solid green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Checkout Cart, Shipping Prices */
+  
+  .cart-item, .shipping-item {
+    width: 100%;
+    min-width: 400px;
+    max-width: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 32px;
+    margin-bottom: 8px;
+    border-radius: 2px;
+    background-color: #EEEEEE;
+  }
+  
+  
+  /*
+  Copyright Google LLC. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at https://angular.io/license
+  */
