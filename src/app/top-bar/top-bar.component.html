@@ -3,11 +3,11 @@
       Collection
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a *ngFor="let collections of collectionData | async" class="dropdown-item" href="#">{{ collections.name }}</a>
+      <a *ngFor="let collections of collectionData | async" class="dropdown-item" href="#" [routerLink]="['/product-details']">
+        {{ collections.name }}
+      </a>
     </div>
   </div>
-  
-  <!--mettre une dropdownlist ici de bootstrap-->
   
   <a href="https://instagram.com/Whimsy_Candle">
     <button id="button-top-bar">
