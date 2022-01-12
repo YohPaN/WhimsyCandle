@@ -25,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot([
       {path: '', component: ProductsListComponent},
       {path: 'products/productsID', component: ProductDetailsComponent},
-      {path: 'cart', component: CartComponent}
+      {path: 'cart', component: CartComponent},
+      {path: 'product-details', component: ProductDetailsComponent}
     ])
   ],
   providers: [],
