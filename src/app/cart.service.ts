@@ -25,7 +25,7 @@ export class CartService {
   getCollectionData(){
     return this.http.get<{name: string, items:{itemName: string, price: number}[]}[]>('/assets/collection.json')
   }
-  
+
   constructor(
     private http: HttpClient
   ) { }
