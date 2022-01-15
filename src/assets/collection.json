@@ -13,13 +13,23 @@
     "items": 
       [
         {
-          "itemName": "Sphére",
+          "itemName": "sphere",
           "price": 8
         },
         {
-          "itemName": "Pellote",
+          "itemName": "pellote",
           "price": 6
         }
       ]
+    },
+    {
+      "name": "Gourmand",
+      "items": 
+      [
+        {
+          "itemName": "cupcake",
+          "price": 8
+        }
+      ] 
     }
 ]

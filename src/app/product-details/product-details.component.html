@@ -1,9 +1,24 @@
+<!--<a href="productRoute">
+    {{productRoute}}
+</a>-->
 <h2>Détails bougie</h2>
 
 <div *ngFor="let collections of collectionData | async">
-    <h3 *ngIf="collections.name === product"> 
-        {{collections.name}} 
-    </h3>
+    <div *ngIf="collections.name === product"> 
+        <h3>
+            {{collections.name}} 
+        </h3>
+        
+        <div *ngFor="let item of collections.items">
+            <p>
+                {{item.itemName}}
+            </p>
+            <img [src]= "imageSrc(item.itemName)">
+        </div>
+
+    </div>
+
+ 
     <!--
     <img src={{product.picture}}>
     <p>

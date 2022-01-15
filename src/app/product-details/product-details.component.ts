@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product} from '../products';
 import { CartService } from '../cart.service';
 
@@ -11,13 +11,18 @@ import { CartService } from '../cart.service';
 export class ProductDetailsComponent implements OnInit {
 
   product= '';
+  collectionData= this.cartService.getCollectionData();
+
+  imageSrc(itemName: string){
+    return "./assets/Image/" + itemName + ".jpg"
+  }
 
   addToCart(product:Product){
     this.cartService.addToCart(product);
     window.alert('Votre bougie a été ajouté à votre panier!');
   }
   
-  collectionData= this.cartService.getCollectionData();
+  
 
   ngOnInit(){
     const routeParams = this.route.snapshot.paramMap;
@@ -30,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService,
+    private router:Router
   ) { }
 
 }
