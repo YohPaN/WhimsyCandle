@@ -11,10 +11,9 @@ export class TopBarComponent implements OnInit {
   collectionData= this.cartService.getCollectionData();
 
   constructor(
-    private cartService:CartService,
-    ) { }
+    private cartService:CartService
+    ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void{}
 
 }

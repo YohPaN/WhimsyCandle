@@ -11,7 +11,9 @@ import { CartService } from '../cart.service';
 export class ProductDetailsComponent implements OnInit {
 
   product= '';
+  NewProduct= '';
   collectionData= this.cartService.getCollectionData();
+  ancienUrl= '';
 
   imageSrc(itemName: string){
     return "./assets/Image/" + itemName + ".jpg"
@@ -22,14 +24,21 @@ export class ProductDetailsComponent implements OnInit {
     window.alert('Votre bougie a été ajouté à votre panier!');
   }
   
-  
-
   ngOnInit(){
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = String(routeParams.get('productsID'));
-    this.product = productIdFromRoute
-    //this.product = products.find(product=>product.id ===productIdFromRoute );
-    //this.product = collectionData.find(product=>collectionDate.name === productIdFromRoute)
+    this.product = productIdFromRoute;
+    this.ancienUrl = productIdFromRoute
+  }
+
+  ngDoCheck(){
+    const NewrouteParams = this.route.snapshot.paramMap;
+    const NewproductIdFromRoute = String(NewrouteParams.get('productsID'));
+    this.NewProduct = NewproductIdFromRoute
+    if (this.NewProduct != this.product){
+      console.log("changement détecté")
+      window.location.reload()
+    }
   }
 
   constructor(

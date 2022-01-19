@@ -1,21 +1,22 @@
 <!--<a href="productRoute">
     {{productRoute}}
 </a>-->
-<h2>Détails bougie</h2>
-
 <div *ngFor="let collections of collectionData | async">
     <div *ngIf="collections.name === product"> 
         <h3>
             {{collections.name}} 
         </h3>
-        
-        <div *ngFor="let item of collections.items">
-            <p>
-                {{item.itemName}}
-            </p>
-            <img [src]= "imageSrc(item.itemName)">
+        <div class="ListProductDetail">
+            <div class="OneProduct" *ngFor="let item of collections.items">
+                <img id="imagePorduct" [src]= "imageSrc(item.itemName)">
+                <div class="bottom-bar">
+                    <p>
+                        {{item.itemName}}
+                    </p>
+                    <button>Ajouter au panier</button>    
+                </div>
+            </div>
         </div>
-
     </div>
 
  
