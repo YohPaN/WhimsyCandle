@@ -1,6 +1,6 @@
 <h3>Panier</h3>
 
 <div class="cart-item" *ngFor="let item of items">
-    <span> {{item.name}} </span>
-    <span> {{item.price | currency }} </span>
+    <img id="imageCartPorduct" [src]= "imageSrc(item)">
+    <div class="itemN"> {{item}} </div>
 </div>

@@ -19,8 +19,8 @@ export class ProductDetailsComponent implements OnInit {
     return "./assets/Image/" + itemName + ".jpg"
   }
 
-  addToCart(product:Product){
-    this.cartService.addToCart(product);
+  addToCart(itemName:string){
+    this.cartService.addToCart(itemName);
     window.alert('Votre bougie a été ajouté à votre panier!');
   }
   
@@ -28,7 +28,6 @@ export class ProductDetailsComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = String(routeParams.get('productsID'));
     this.product = productIdFromRoute;
-    this.ancienUrl = productIdFromRoute
   }
 
   ngDoCheck(){

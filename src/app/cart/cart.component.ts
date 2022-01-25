@@ -9,7 +9,7 @@ import { CartService } from '../cart.service';
 export class CartComponent implements OnInit {
 
   items = this.cartService.getItems();
-  
+
   constructor(
     private cartService:CartService
     ) { }
@@ -17,4 +17,9 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  imageSrc(item: string){
+    return "./assets/Image/" + item + ".jpg"
+  }
+
+  
 }

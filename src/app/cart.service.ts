@@ -7,11 +7,17 @@ import { Product } from './products';
 })
 export class CartService {
 
-  items:Product[]=[];
+  items: string[]=[];
+
+  addToCart(itemName:string){
+    this.items.push(itemName);
+  }
+
+ /* items:Product[]=[];
 
   addToCart(product:Product){
     this.items.push(product);
-  }
+  }*/
 
   getItems(){
     return this.items;
