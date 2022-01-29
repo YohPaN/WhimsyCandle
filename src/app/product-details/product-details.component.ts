@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product} from '../products';
 import { CartService } from '../cart.service';
+import { ManagingDataService } from '../managing-data.service';
 
 @Component({
   selector: 'app-product-details',
@@ -12,15 +12,15 @@ export class ProductDetailsComponent implements OnInit {
 
   product= '';
   NewProduct= '';
-  collectionData= this.cartService.getCollectionData();
   ancienUrl= '';
+  items: string[] = [];
 
-  imageSrc(itemName: string){
-    return "./assets/Image/" + itemName + ".jpg"
+  imageSrc(item: string){
+    return "./assets/Image/" + item + ".jpg"
   }
 
-  addToCart(itemName:string){
-    this.cartService.addToCart(itemName);
+  addToCart(item:string){
+    this.cartService.addToCart(item);
     window.alert('Votre bougie a été ajouté à votre panier!');
   }
   
@@ -28,6 +28,16 @@ export class ProductDetailsComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = String(routeParams.get('productsID'));
     this.product = productIdFromRoute;
+
+    this.managingData.getCollectionData().subscribe(
+      myObservable => {
+        myObservable.forEach(observableElement => {
+          if(observableElement.collectionName === this.product){
+            this.items.push(observableElement.itemName) 
+          }
+        })
+      }
+    )
   }
 
   ngDoCheck(){
@@ -35,7 +45,6 @@ export class ProductDetailsComponent implements OnInit {
     const NewproductIdFromRoute = String(NewrouteParams.get('productsID'));
     this.NewProduct = NewproductIdFromRoute
     if (this.NewProduct != this.product){
-      console.log("changement détecté")
       window.location.reload()
     }
   }
@@ -43,7 +52,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService,
-    private router:Router
+    private managingData: ManagingDataService
   ) { }
 
 }

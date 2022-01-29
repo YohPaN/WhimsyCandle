@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { products } from '../products';
 
 @Component({
   selector: 'app-products-list',
@@ -8,13 +7,8 @@ import { products } from '../products';
 })
 export class ProductsListComponent implements OnInit {
 
-  products = products;
+  constructor(){ };
 
-  ngOnInit(): void {
-  }
-
-  addCart() {
-    window.alert('Le produit a été ajouté au panier!');
-  }
+  ngOnInit():void {}
 
 }

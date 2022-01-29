@@ -1,50 +1,11 @@
-<!--<a href="productRoute">
-    {{productRoute}}
-</a>-->
-<div *ngFor="let collections of collectionData | async">
-    <div *ngIf="collections.name === product"> 
-        <h3>
-            {{collections.name}} 
-        </h3>
-        <div class="ListProductDetail">
-            <div class="OneProduct" *ngFor="let item of collections.items">
-                <img id="imagePorduct" [src]= "imageSrc(item.itemName)">
-                <div class="bottom-bar">
-                    <p>
-                        {{item.itemName}}
-                    </p>
-                    <button (click)="addToCart(item.itemName)">Ajouter au panier</button>    
-                </div>
-            </div>
-        </div>
+<h3> {{product}}</h3>
+
+<div class="ListProductDetail">
+    <div class="OneProduct" *ngFor="let item of items">
+        <img id="imagePorduct" [src]= "imageSrc(item)">
+        <p>
+            {{item}}
+        </p>
+        <button (click)="addToCart(item)">Ajouter au panier</button>
     </div>
-
- 
-    <!--
-    <img src={{product.picture}}>
-    <p>
-        {{product.price | currency}}
-        {{product.taille}}
-        {{product.senteur}}
-        {{product.color}}
-        {{product.topping}}
-        {{product.temps}}
-    </p>
-    <button (click)="addToCart(product)">Ajouter au panier</button>
 </div>
--->
-
-
-<!--<div *ngIf="product">
-    <h3> {{product.name}}</h3>
-    <img src={{product.picture}}>
-    <p>
-        {{product.price | currency}}
-        {{product.taille}}
-        {{product.senteur}}
-        {{product.color}}
-        {{product.topping}}
-        {{product.temps}}
-    </p>
-    <button (click)="addToCart(product)">Ajouter au panier</button>
-</div>-->

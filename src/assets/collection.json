@@ -1,35 +1,24 @@
 [
   {
-    "name": "Sorcière",
-    "items": [
-      {
-        "itemName": "Chaudron",
-        "price": 15
-      }]
-    
+    "collectionName": "Sorcière",
+    "itemName": "Chaudron",
+    "price": 15
+  },
+
+  {
+    "collectionName": "Autre",
+    "itemName": "sphere",
+    "price": 8
   },
   {
-    "name": "Autre",
-    "items": 
-      [
-        {
-          "itemName": "sphere",
-          "price": 8
-        },
-        {
-          "itemName": "pellote",
-          "price": 6
-        }
-      ]
-    },
-    {
-      "name": "Gourmand",
-      "items": 
-      [
-        {
-          "itemName": "cupcake",
-          "price": 8
-        }
-      ] 
-    }
+    "collectionName": "Autre",
+    "itemName": "pellote",
+    "price": 6
+  },
+
+  {
+    "collectionName": "Gourmand",
+    "itemName": "cupcake",
+    "price": 8
+  }
 ]
