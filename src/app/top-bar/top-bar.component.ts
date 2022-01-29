@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../cart.service';
+import { ManagingDataService } from '../managing-data.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,12 +8,24 @@ import { CartService } from '../cart.service';
 })
 export class TopBarComponent implements OnInit {
 
-  collectionData= this.cartService.getCollectionData();
+  collectionNames: string[]=[];
 
   constructor(
-    private cartService:CartService
+    private managingData: ManagingDataService
     ) {}
 
-  ngOnInit(): void{}
+  ngOnInit() {
+    this.managingData.getCollectionData().subscribe(
+      myObservable => {
+        myObservable.forEach(observableElement => {
+          if( this.collectionNames.indexOf(observableElement.collectionName) === -1){
+            this.collectionNames.push(observableElement.collectionName) 
+          }
+        }
+        )
+      }
+    )
+    }
+  
 
 }

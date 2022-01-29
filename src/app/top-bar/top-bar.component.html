@@ -3,8 +3,8 @@
       Collection
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a *ngFor="let collections of collectionData | async" class="dropdown-item" href="#" [routerLink]="['products/', collections.name]">
-        {{ collections.name }}
+      <a *ngFor="let collectionName of collectionNames" class="dropdown-item" href="#" [routerLink]="['products/', collectionName]">
+        {{ collectionName }}
       </a>
     </div>
   </div>
