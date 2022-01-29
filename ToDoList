@@ -1,0 +1,2 @@
+Modifier les route dans app.module.ts afin que product-list soit la page de la collection, 
+que produt-details soit la page de la bougie selectionné et créer une page d'accueil du coup.
