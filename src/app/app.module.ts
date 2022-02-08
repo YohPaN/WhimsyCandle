@@ -9,6 +9,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,15 +17,17 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsListComponent,
     TopBarComponent,
     ProductDetailsComponent,
-    CartComponent
+    CartComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      {path: '', component: ProductsListComponent},
-      {path: 'products/:productsID', component: ProductDetailsComponent},
+      {path: '', component: HomeComponent},
+      {path: 'collection/:collectionID', component: ProductsListComponent},
+      {path: 'collection/:collectionID/productDetails/:productID', component: ProductDetailsComponent},
       {path: 'cart', component: CartComponent},
     ])
   ],

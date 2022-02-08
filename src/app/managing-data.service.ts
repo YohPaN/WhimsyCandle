@@ -16,4 +16,13 @@ export class ManagingDataService {
       }),
     )
   }
+
+  getItemData( product: string){
+    return this.http.get<{collectionName: string, itemName: string, price: number}[]>('/assets/collection.json').pipe(
+      map(collection => {
+        let myItem = collection.find(x => product === x.itemName);
+        return myItem;
+      }),
+    )
+  }
 }

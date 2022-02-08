@@ -1,11 +1,7 @@
-<h3> {{product}}</h3>
-
-<div class="ListProductDetail">
-    <div class="OneProduct" *ngFor="let item of items">
-        <img id="imagePorduct" [src]= "imageSrc(item)">
-        <p>
-            {{item}}
-        </p>
-        <button (click)="addToCart(item)">Ajouter au panier</button>
-    </div>
+<div>
+    <img [src]=imageSrc(IName)>
+    <p> {{IName}}</p>
+    <p> {{ICollection}}</p>
+    <p> {{IPrice}}</p>
+    <button (click)="addToCart(IName)">Ajouter au panier</button>
 </div>

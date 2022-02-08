@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from '../cart.service';
+import { ActivatedRoute } from '@angular/router';
 import { ManagingDataService } from '../managing-data.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -10,10 +10,11 @@ import { ManagingDataService } from '../managing-data.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  product= '';
-  NewProduct= '';
-  ancienUrl= '';
-  items: string[] = [];
+  product = '';
+  IName: string = ''; 
+  ICollection: string = '';
+  IPrice: number = 0;
+  ItemInformation: string[]=[];
 
   imageSrc(item: string){
     return "./assets/Image/" + item + ".jpg"
@@ -23,36 +24,32 @@ export class ProductDetailsComponent implements OnInit {
     this.cartService.addToCart(item);
     window.alert('Votre bougie a été ajouté à votre panier!');
   }
-  
+
   ngOnInit(){
     const routeParams = this.route.snapshot.paramMap;
-    const productIdFromRoute = String(routeParams.get('productsID'));
+    const productIdFromRoute = String(routeParams.get('productID'));
     this.product = productIdFromRoute;
 
+    /*this.managingData.getItemData(this.product).subscribe(
+      //x => console.log(x?.price)
+    )*/
     this.managingData.getCollectionData().subscribe(
-      myObservable => {
-        myObservable.forEach(observableElement => {
-          if(observableElement.collectionName === this.product){
-            this.items.push(observableElement.itemName) 
-          }
-        })
+      x => x.forEach( y => {
+        if(this.product === y.itemName){
+          this.IName = y.itemName
+          this.ICollection = y.collectionName
+          this.IPrice = y.price
+        }
       }
     )
-  }
+    )
 
-  ngDoCheck(){
-    const NewrouteParams = this.route.snapshot.paramMap;
-    const NewproductIdFromRoute = String(NewrouteParams.get('productsID'));
-    this.NewProduct = NewproductIdFromRoute
-    if (this.NewProduct != this.product){
-      window.location.reload()
-    }
   }
 
   constructor(
     private route: ActivatedRoute,
-    private cartService: CartService,
-    private managingData: ManagingDataService
+    private managingData: ManagingDataService,
+    private cartService: CartService
   ) { }
 
 }

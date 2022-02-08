@@ -1,3 +1,15 @@
+<h3> {{product}}</h3>
+
+<div class="ListProductDetail">
+    <div class="OneProduct" *ngFor="let item of items">
+        <img id="imagePorduct" [src]= "imageSrc(item)">
+        <a [routerLink]="['productDetails/', item]">
+            {{item}}
+        </a>
+        <button (click)="addToCart(item)">Ajouter au panier</button>
+    </div>
+</div>
+
 <!-- 
   Copyright Google LLC. All Rights Reserved.
   Use of this source code is governed by an MIT-style license that

@@ -3,7 +3,7 @@
       Collection
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a *ngFor="let collectionName of collectionNames" class="dropdown-item" href="#" [routerLink]="['products/', collectionName]">
+      <a *ngFor="let collectionName of collectionNames" class="dropdown-item" href="#" [routerLink]="['collection/', collectionName]">
         {{ collectionName }}
       </a>
     </div>
