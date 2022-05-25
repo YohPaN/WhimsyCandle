@@ -1,0 +1,15 @@
+ca devrait etre les bougie rangé dans des collections avec des infos
+trouver comment mettre les bougie dans mongoDb
+du type:
+
+db.summerCollection: [
+  {
+    id: number,
+    name: string,
+    price: number,
+    photo: object (à définir)
+  },
+  ect...
+]
+
+on balance ça sur le l'app et on récupére sur Angular
