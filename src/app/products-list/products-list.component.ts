@@ -15,7 +15,7 @@ export class ProductsListComponent implements OnInit {
   ancienUrl= '';
   items: string[] = [];
 
-  
+
   imageSrc(item: string){
     return "./assets/Image/" + item + ".jpg"
   }
@@ -24,24 +24,24 @@ export class ProductsListComponent implements OnInit {
     this.cartService.addToCart(item);
     window.alert('Votre bougie a été ajouté à votre panier!');
   }
- 
+
 
   ngOnInit() {
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = String(routeParams.get('collectionID'));
     this.product = productIdFromRoute;
 
-    this.managingData.getCollectionData().subscribe(
+    /*this.managingData.getCollectionData().subscribe(
       myObservable => {
         myObservable.forEach(observableElement => {
           if(observableElement.collectionName === this.product){
-            this.items.push(observableElement.itemName) 
+            this.items.push(observableElement.itemName)
           }
         })
       }
-    )
+    )*/
   }
-  
+
   ngDoCheck(){
     const NewrouteParams = this.route.snapshot.paramMap;
     const NewproductIdFromRoute = String(NewrouteParams.get('collectionID'));

@@ -11,7 +11,7 @@ import { CartService } from '../cart.service';
 export class ProductDetailsComponent implements OnInit {
 
   product = '';
-  IName: string = ''; 
+  IName: string = '';
   ICollection: string = '';
   IPrice: number = 0;
   ItemInformation: string[]=[];
@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
 
     /*this.managingData.getItemData(this.product).subscribe(
       //x => console.log(x?.price)
-    )*/
+    )
     this.managingData.getCollectionData().subscribe(
       x => x.forEach( y => {
         if(this.product === y.itemName){
@@ -42,7 +42,7 @@ export class ProductDetailsComponent implements OnInit {
         }
       }
     )
-    )
+    )*/
 
   }
 

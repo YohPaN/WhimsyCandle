@@ -3,30 +3,30 @@
       Collection
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a *ngFor="let collectionName of collectionNames" class="dropdown-item" href="#" [routerLink]="['collection/', collectionName]">
-        {{ collectionName }}
+      <a *ngFor="let collection of candleCollections" class="dropdown-item" href="#" [routerLink]="['collection/', collection]">
+        {{ collection }}
       </a>
     </div>
   </div>
-  
+
   <a [routerLink]="['/']">
     <h1>Whimsy Candle</h1>
   </a>
-  
+
   <div class="groupeDroite">
     <a href="https://instagram.com/Whimsy_Candle">
       <button id="button-top-bar">
         <img id="instagram-logo" src="./assets/Image/instagram-logo.png">
       </button>
     </a>
-  
+
     <a class="button fancy-button" routerLink="/cart">
       <i class="material-icons">shopping_cart</i>Checkout
     </a>
   </div>
 
-  
-  <!-- 
+
+  <!--
   Copyright Google LLC. All Rights Reserved.
   Use of this source code is governed by an MIT-style license that
   can be found in the LICENSE file at https://angular.io/license

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription, map } from 'rxjs';
+import { Candle } from '../candle';
 import { ManagingDataService } from '../managing-data.service';
 
 @Component({
@@ -6,26 +8,30 @@ import { ManagingDataService } from '../managing-data.service';
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.css']
 })
+
 export class TopBarComponent implements OnInit {
 
-  collectionNames: string[]=[];
+  candleCollections: string[] = [];
+  private CollectionSub: Subscription = new Subscription;
 
   constructor(
     private managingData: ManagingDataService
-    ) {}
+  ) {}
 
   ngOnInit() {
-    this.managingData.getCollectionData().subscribe(
-      myObservable => {
-        myObservable.forEach(observableElement => {
-          if( this.collectionNames.indexOf(observableElement.collectionName) === -1){
-            this.collectionNames.push(observableElement.collectionName) 
-          }
+    this.managingData.getCandlesData();
+    this.CollectionSub = this.managingData.getCandleUpdateListener()
+    .subscribe((candles: Candle[]) => {
+      candles.forEach(candleElement => {
+        if(this.candleCollections.indexOf(candleElement.collectionName) === -1){
+          this.candleCollections.push(candleElement.collectionName)
         }
-        )
-      }
-    )
-    }
-  
+      })
+    })
+  }
+
+  ngOnDestroy(){
+    this.CollectionSub.unsubscribe();
+  }
 
 }
