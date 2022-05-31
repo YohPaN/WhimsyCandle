@@ -9,7 +9,6 @@ import { Candle } from './candle';
 export class ManagingDataService {
 
   private candles: Candle[] = [];
-  private candleCollection: [] = [];
   private updateCandles = new Subject<Candle[]>();
   constructor(private http: HttpClient) { }
 

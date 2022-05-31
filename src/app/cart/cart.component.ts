@@ -17,9 +17,9 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  imageSrc(item: string){
+  /*imageSrc(item: string){
     return "./assets/Image/" + item + ".jpg"
-  }
+  }*/
 
-  
+
 }

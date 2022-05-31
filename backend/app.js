@@ -1,5 +1,19 @@
 const express = require('express');
+const bodyparser = require('body-parser');
+const mongoose = require('mongoose');
+const candlemodel = require('./models/candle.js');
+
 const app = express();
+
+mongoose.connect("mongodb+srv://YohPaN:Ce37am30j@cluster0.nt74f.mongodb.net/node-angular-database?retryWrites=true&w=majority")
+.then(() => {
+  console.log("Connected to db");
+})
+.catch(() => {
+  console.log("onnection failed")
+});
+
+app.use(bodyparser.json());
 
 //set some Header to give access through the CORS
 app.use((req, res, next) => {
@@ -15,7 +29,33 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use('/api/CandleCollection', (req, res, next) => {
+app.post("/api/candles", (req, res, next) => {
+  const candle = new candlemodel({
+    collectionName: req.body.collectionName,
+    itemName: req.body.itemName,
+    price: req.body.price,
+    photo: req.body.photo
+  });
+  candle.save().then(result => {
+    res.status(200).json({
+      message: 'Candle added Successfully',
+      candleId: result._id
+    });
+  });
+})
+
+app.get('/api/candles', (req, res, next) => {
+  candlemodel.find()
+  .then((documents) => {
+    console.log(documents);
+    res.status(200).json({
+      message: 'Candle Fetched Successfully',
+      posts: documents
+    });
+  });
+})
+
+/*app.use('/api/CandleCollection', (req, res, next) => {
   const CandleCollection = [
     {
       "id": "1",
@@ -24,7 +64,6 @@ app.use('/api/CandleCollection', (req, res, next) => {
       "price": 15,
       "photo": ""
     },
-
     {
       "id": "2",
       "collectionName": "Autre",
@@ -39,7 +78,6 @@ app.use('/api/CandleCollection', (req, res, next) => {
       "price": 6,
       "photo": ""
     },
-
     {
       "id": "4",
       "collectionName": "Gourmand",
@@ -48,10 +86,11 @@ app.use('/api/CandleCollection', (req, res, next) => {
       "photo": ""
     }
   ];
+
   res.status(200).json({
     message: "this is the first collection of candle",
     CandleCollection: CandleCollection
   });
-});
+});*/
 
 module.exports = app;

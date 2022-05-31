@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ManagingDataService } from '../managing-data.service';
 import { CartService } from '../cart.service';
+import { Subscription } from 'rxjs';
+import { Candle } from '../candle';
 
 @Component({
   selector: 'app-product-details',
@@ -10,25 +12,37 @@ import { CartService } from '../cart.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  product = '';
-  IName: string = '';
-  ICollection: string = '';
-  IPrice: number = 0;
-  ItemInformation: string[]=[];
+  candleName: string = '';
+  collectionName: string = '';
+  price: number = 0;
+  //ItemInformation: string[]=[];
+  //candleCollections: string[] = [];
+  private CollectionSub: Subscription = new Subscription;
 
-  imageSrc(item: string){
+  /*imageSrc(item: string){
     return "./assets/Image/" + item + ".jpg"
   }
 
   addToCart(item:string){
     this.cartService.addToCart(item);
     window.alert('Votre bougie a été ajouté à votre panier!');
-  }
+  }*/
 
   ngOnInit(){
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = String(routeParams.get('productID'));
-    this.product = productIdFromRoute;
+    this.candleName = productIdFromRoute;
+
+    this.managingData.getCandlesData();
+    this.CollectionSub = this.managingData.getCandleUpdateListener()
+    .subscribe((candles: Candle[]) => {
+      candles.forEach(candleElement => {
+        if(candleElement.itemName === this.candleName){
+          this.collectionName = candleElement.collectionName;
+          this.price = candleElement.price;
+        }
+      })
+    })
 
     /*this.managingData.getItemData(this.product).subscribe(
       //x => console.log(x?.price)
@@ -44,6 +58,10 @@ export class ProductDetailsComponent implements OnInit {
     )
     )*/
 
+  }
+
+  ngOnDestroy(){
+    this.CollectionSub.unsubscribe();
   }
 
   constructor(
